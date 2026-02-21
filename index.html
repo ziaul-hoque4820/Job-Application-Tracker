@@ -17,21 +17,85 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- icons  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         * {
             font-family: "Outfit", sans-serif;
         }
-    </style>
 
+        body {
+            background-color: #f0f4f8;
+        }
+
+        .tracker-card {
+            background: #fff;
+            border: 1.5px dashed #93c5d6;
+            border-radius: 12px;
+        }
+
+        .stat-divider {
+            border-right: 1.5px dashed #c7dfe8;
+        }
+
+        .tab-active-custom {
+            background: #e8f4f8;
+            color: #0e4f6e;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .tab-btn {
+            padding: 6px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            color: #6b7280;
+            transition: all 0.2s;
+            border: none;
+            background: transparent;
+        }
+
+        .tab-btn:hover {
+            background: #e8f4f8;
+            color: #0e4f6e;
+        }
+    </style>
 
 </head>
 
-<body>
-    <h1 class="text-3xl font-bold text-gray-500">Hello Developer!!!</h1>
+<body class="min-h-screen p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto space-y-5">
+        <!-- Header Section Card -->
+        <header class="tracker-card p-6">
+            <h1 class="text-2xl sm:text-3xl font-bold text-[#0a3d5c] mb-6">Job Application Tracker</h1>
+
+            <div class="grid grid-cols-3 divide-x divide-dashed divide-[#c7dfe8]">
+
+                <!-- Total -->
+                <div class="pr-4 sm:pr-8">
+                    <p class="text-gray-500 text-sm sm:text-base font-medium mb-1">Total</p>
+                    <p class="text-2xl sm:text-4xl font-bold text-[#1a6fa0]">0</p>
+                </div>
+
+                <!-- Interview -->
+                <div class="px-4 sm:px-8">
+                    <p class="text-gray-500 text-sm sm:text-base font-medium mb-1">Interview</p>
+                    <p class="text-2xl sm:text-4xl font-bold text-[#22c55e]">0</p>
+                </div>
+
+                <!-- Rejected -->
+                <div class="pl-4 sm:pl-8">
+                    <p class="text-gray-500 text-sm sm:text-base font-medium mb-1">Rejected</p>
+                    <p class="text-2xl sm:text-4xl font-bold text-[#ef4444]">0</p>
+                </div>
+
+            </div>
+        </header>
+    </div>
+
 </body>
 
 </html>
