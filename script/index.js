@@ -1,8 +1,10 @@
 import { jobData } from "./job-data.js";
-import { getElementById} from "./utils.js";
+import { getElementById } from "./utils.js";
 
 const jobCart = getElementById("js-jobs-cart");
 const totalJob = getElementById("js-total-job");
+const interviewJob = getElementById("js-interview-job");
+const rejectedJob = getElementById("js-rejected-job");
 const availableJobsTag = getElementById("js-available-jobs");
 
 const renderAllJobs = () => {
@@ -36,7 +38,7 @@ const renderAllJobs = () => {
                 <!-- Status Badge -->
                 <div id="status-badge" class="mb-4">
                     <span
-                        class="inline-block border border-gray-300 text-gray-500 bg-gray-200 text-xs font-semibold tracking-widest px-3 py-1.5 rounded-md uppercase">
+                        class="${`inline-block border ${job.status === 'pending' && "border-gray-300 text-gray-500 bg-gray-200"} ${job.status === 'interview' && "border-[#22c55e] text-[#22c55e] bg-green-100"} ${job.status === 'rejected' && "border-[#ef4444] text-[#ef4444] bg-red-100"}  text-xs font-semibold tracking-widest px-3 py-1.5 rounded-md uppercase`}">
                         ${job.status}
                     </span>
                 </div>
@@ -48,11 +50,15 @@ const renderAllJobs = () => {
 
                 <!-- Action Buttons -->
                 <div class="flex flex-wrap gap-3">
-                    <button id="js-interview-btn"
+                    <button
+                        onClick="handleInterview(${job.id})"
+                        id="js-interview-btn"
                         class="border border-[#22c55e] text-[#22c55e] text-xs font-bold tracking-widest px-4 py-2 rounded-md uppercase hover:bg-green-50 transition-colors duration-150">
                         Interview
                     </button>
-                    <button id="js-rejected-btn"
+                    <button 
+                        onClick="handleRejected(${job.id})"
+                        id="js-rejected-btn"
                         class="border border-[#ef4444] text-[#ef4444] text-xs font-bold tracking-widest px-4 py-2 rounded-md uppercase hover:bg-red-50 transition-colors duration-150">
                         Rejected
                     </button>
@@ -62,12 +68,43 @@ const renderAllJobs = () => {
         `
 
     })
-    
-    const availableJobs = jobData.filter(job => job.status === "pending");
-    
-    totalJob.innerText = jobData.length;
-    availableJobsTag.innerText = `${availableJobs.length} jobs`
+
+    const totalCount = jobData.length;
+    const pendingCount = jobData.filter(job => job.status === "pending").length;
+    const interviewCount = jobData.filter(job => job.status === "interview").length;
+    const rejectedCount = jobData.filter(job => job.status === "rejected").length;
+
+    totalJob.innerText = totalCount;
+    availableJobsTag.innerText = `${pendingCount} jobs`;
+    interviewJob.innerText = interviewCount;
+    rejectedJob.innerText = rejectedCount;
+
     jobCart.innerHTML = allJobsHTML;
 }
 
 renderAllJobs()
+
+const handleInterview = (id) => {
+    const targetJob = jobData.find(jobItem => jobItem.id === id);
+    if (targetJob) {
+        targetJob.status = "interview"
+        console.log("Updated JOb", targetJob);
+
+    }
+    interviewJob.innerText = jobData.filter(job => job.status === "interview").length
+    renderAllJobs()
+}
+
+const handleRejected = (id) => {
+    const targetJob = jobData.find(jobItem => jobItem.id === id);
+    if (targetJob) {
+        targetJob.status = "rejected"
+        console.log("Updated JOb", targetJob);
+
+    }
+    rejectedJob.innerText = jobData.filter(job => job.status === "rejected").length
+    renderAllJobs()
+}
+
+window.handleInterview = handleInterview;
+window.handleRejected = handleRejected;
