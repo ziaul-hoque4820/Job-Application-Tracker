@@ -1,4 +1,4 @@
-const jobData = [
+export const jobData = [
     {
         id: 1,
         companyName: "Mobile First Corp",

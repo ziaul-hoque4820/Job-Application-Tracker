@@ -1,6 +1,5 @@
-// Get Inner Text value
-export const getinnerTextvalue = (id) => {
-    const text = document.getElementById(id);
-    const textValue = text.innerText;
+// Get element
+export const getElementById = (id) => {
+    const textValue = document.getElementById(id);
     return textValue;
 }

@@ -101,7 +101,7 @@
             <!-- Card Header -->
             <div class="flex items-center justify-between mb-5">
                 <h2 class="text-xl sm:text-2xl font-bold text-[#0a3d5c]">Available Jobs</h2>
-                <span id="js-available-jobs" class="text-gray-400 text-sm sm:text-base font-medium">1 jobs</span>
+                <span id="js-available-jobs" class="text-gray-400 text-sm sm:text-base font-medium">0 jobs</span>
             </div>
 
             <!-- Tabs -->
@@ -111,62 +111,15 @@
                 <button id="rejected-job" class="tab-btn">Rejected</button>
             </div>
 
-            <!-- Job Card -->
-            <div
-                class="relative border border-gray-200 rounded-xl p-5 sm:p-6 bg-white hover:shadow-md transition-shadow duration-200">
-
-                <!-- Delete Icon -->
-                <button id="js-delete-job" class="absolute top-4 right-4 text-gray-300 hover:text-red-400 transition-colors duration-150">
-                    <i class="fa-regular fa-trash-can text-base"></i>
-                </button>
-
-                <!-- Company & Role -->
-                <div class="mb-2 pr-8">
-                    <h3 class="text-base sm:text-lg font-bold text-gray-800">Mobile First Corp</h3>
-                    <p class="text-gray-500 text-sm sm:text-base">React Native Developer</p>
-                </div>
-
-                <!-- Meta info -->
-                <p class="text-gray-400 text-sm mb-4 flex flex-wrap items-center gap-1">
-                    <span>Remote</span>
-                    <span class="text-gray-300">•</span>
-                    <span>Full-time</span>
-                    <span class="text-gray-300">•</span>
-                    <span>$130,000 – $175,000</span>
-                </p>
-
-                <!-- Status Badge -->
-                <div id="status-badge" class="mb-4">
-                    <span
-                        class="inline-block border border-gray-300 text-gray-500 bg-gray-200 text-xs font-semibold tracking-widest px-3 py-1.5 rounded-md uppercase">
-                        Not Applied
-                    </span>
-                </div>
-
-                <!-- Description -->
-                <p class="text-gray-500 text-sm sm:text-base mb-5 leading-relaxed">
-                    Build cross-platform mobile applications using React Native. Work on products used by millions of
-                    users worldwide.
-                </p>
-
-                <!-- Action Buttons -->
-                <div class="flex flex-wrap gap-3">
-                    <button id="js-interview-btn"
-                        class="border border-[#22c55e] text-[#22c55e] text-xs font-bold tracking-widest px-4 py-2 rounded-md uppercase hover:bg-green-50 transition-colors duration-150">
-                        Interview
-                    </button>
-                    <button id="js-rejected-btn"
-                        class="border border-[#ef4444] text-[#ef4444] text-xs font-bold tracking-widest px-4 py-2 rounded-md uppercase hover:bg-red-50 transition-colors duration-150">
-                        Rejected
-                    </button>
-                </div>
-
+            <div id="js-jobs-cart">
+                <!-- all jobs card inject here -->
+                
             </div>
 
         </div>
     </div>
 
-    <script src="./script/index.js"></script>
+    <script type="module" src="./script/index.js"></script>
 </body>
 
 </html>
