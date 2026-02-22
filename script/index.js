@@ -6,11 +6,29 @@ const totalJob = getElementById("js-total-job");
 const interviewJob = getElementById("js-interview-job");
 const rejectedJob = getElementById("js-rejected-job");
 const availableJobsTag = getElementById("js-available-jobs");
+const allJobFillter = getElementById("all-job");
+const interviewJobFillter = getElementById("interview-job");
+const rejectedJobFillter = getElementById("rejected-job");
 
-const renderAllJobs = () => {
+const renderAllJobs = (jobs) => {
     let allJobsHTML = '';
 
-    jobData.forEach(job => {
+    if (jobs.length == 0) {
+        allJobsHTML = `
+            <div class="flex flex-col items-center justify-center py-16 sm:py-24 gap-4">
+                <div class="relative">
+                    <img src="./assets/jobs.png" alt="jobs-icon">
+                </div>
+
+                <div class="text-center mt-2">
+                    <p class="text-[#0a3d5c] font-bold text-lg sm:text-xl">No jobs available</p>
+                    <p class="text-gray-400 text-sm sm:text-base mt-1">Check back soon for new job opportunities</p>
+                </div>
+            </div>
+        `
+    }
+
+    jobs.forEach(job => {
         allJobsHTML += `
             <div
                 class="relative border border-gray-200 rounded-xl p-5 sm:p-6 bg-white hover:shadow-md transition-shadow duration-200 mb-4">
@@ -82,7 +100,7 @@ const renderAllJobs = () => {
     jobCart.innerHTML = allJobsHTML;
 }
 
-renderAllJobs()
+renderAllJobs(jobData);
 
 const handleInterview = (id) => {
     const targetJob = jobData.find(jobItem => jobItem.id === id);
@@ -92,7 +110,7 @@ const handleInterview = (id) => {
 
     }
     interviewJob.innerText = jobData.filter(job => job.status === "interview").length
-    renderAllJobs()
+    renderAllJobs(jobData);
 }
 
 const handleRejected = (id) => {
@@ -103,8 +121,24 @@ const handleRejected = (id) => {
 
     }
     rejectedJob.innerText = jobData.filter(job => job.status === "rejected").length
-    renderAllJobs()
+    renderAllJobs(jobData)
 }
 
 window.handleInterview = handleInterview;
 window.handleRejected = handleRejected;
+
+allJobFillter.addEventListener('click', () => {
+    renderAllJobs(jobData);
+});
+
+interviewJobFillter.addEventListener('click', () => {
+    const targerJob = jobData.filter(jobItem => jobItem.status === 'interview');
+    console.log(targerJob);
+    renderAllJobs(targerJob);
+})
+
+rejectedJobFillter.addEventListener('click', () => {
+    const targerJob = jobData.filter(jobItem => jobItem.status === 'rejected');
+    console.log(targerJob);
+    renderAllJobs(targerJob);
+})
