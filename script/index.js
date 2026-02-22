@@ -10,6 +10,14 @@ const allJobFillter = getElementById("all-job");
 const interviewJobFillter = getElementById("interview-job");
 const rejectedJobFillter = getElementById("rejected-job");
 
+let activeFilter = 'all';
+
+const getFilterJobs = () => {
+    if (activeFilter === 'interview') return jobData.filter(job => job.status === 'interview');
+    if (activeFilter === 'rejected') return jobData.filter(job => job.status === 'rejected');
+    return jobData;
+}
+
 const renderAllJobs = (jobs) => {
     let allJobsHTML = '';
 
@@ -93,9 +101,16 @@ const renderAllJobs = (jobs) => {
     const rejectedCount = jobData.filter(job => job.status === "rejected").length;
 
     totalJob.innerText = totalCount;
-    availableJobsTag.innerText = `${pendingCount} jobs`;
     interviewJob.innerText = interviewCount;
     rejectedJob.innerText = rejectedCount;
+
+    if (activeFilter === 'interview') {
+        availableJobsTag.innerText = `${jobs.length} jobs`;
+    } else if (activeFilter === 'rejected') {
+        availableJobsTag.innerText = `${jobs.length} jobs`;
+    } else {
+        availableJobsTag.innerText = `${jobData.filter(job => job.status === "pending").length} jobs`;
+    }
 
     jobCart.innerHTML = allJobsHTML;
 }
@@ -107,10 +122,8 @@ const handleInterview = (id) => {
     if (targetJob) {
         targetJob.status = "interview"
         console.log("Updated JOb", targetJob);
-
     }
-    interviewJob.innerText = jobData.filter(job => job.status === "interview").length
-    renderAllJobs(jobData);
+    renderAllJobs(getFilterJobs());
 }
 
 const handleRejected = (id) => {
@@ -120,25 +133,23 @@ const handleRejected = (id) => {
         console.log("Updated JOb", targetJob);
 
     }
-    rejectedJob.innerText = jobData.filter(job => job.status === "rejected").length
-    renderAllJobs(jobData)
+    renderAllJobs(getFilterJobs())
 }
 
 window.handleInterview = handleInterview;
 window.handleRejected = handleRejected;
 
 allJobFillter.addEventListener('click', () => {
-    renderAllJobs(jobData);
+    activeFilter = 'all';
+    renderAllJobs(getFilterJobs());
 });
 
 interviewJobFillter.addEventListener('click', () => {
-    const targerJob = jobData.filter(jobItem => jobItem.status === 'interview');
-    console.log(targerJob);
-    renderAllJobs(targerJob);
+    activeFilter = 'interview'
+    renderAllJobs(getFilterJobs());
 })
 
 rejectedJobFillter.addEventListener('click', () => {
-    const targerJob = jobData.filter(jobItem => jobItem.status === 'rejected');
-    console.log(targerJob);
-    renderAllJobs(targerJob);
+    activeFilter = 'rejected'
+    renderAllJobs(getFilterJobs());
 })
