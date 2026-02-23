@@ -42,7 +42,7 @@ const renderAllJobs = (jobs) => {
                 class="relative border border-gray-200 rounded-xl p-5 sm:p-6 bg-white hover:shadow-md transition-shadow duration-200 mb-4">
 
                 <!-- Delete Icon -->
-                <button id="js-delete-job" class="absolute top-4 right-4 text-gray-300 hover:text-red-400 transition-colors duration-150">
+                <button onClick="handleDelete(${job.id})" id="js-delete-job" class="absolute top-4 right-4 text-gray-300 hover:text-red-400 transition-colors duration-150">
                     <i class="fa-regular fa-trash-can text-base"></i>
                 </button>
 
@@ -136,8 +136,15 @@ const handleRejected = (id) => {
     renderAllJobs(getFilterJobs())
 }
 
+const handleDelete = (id) => {
+    const index = jobData.findIndex(job => job.id === id);
+    if (index !== -1) jobData.splice(index, 1);
+    renderAllJobs(getFilterJobs());
+}
+
 window.handleInterview = handleInterview;
 window.handleRejected = handleRejected;
+window.handleDelete = handleDelete;
 
 allJobFillter.addEventListener('click', () => {
     activeFilter = 'all';
