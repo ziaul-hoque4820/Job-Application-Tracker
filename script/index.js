@@ -39,7 +39,7 @@ const renderAllJobs = (jobs) => {
     jobs.forEach(job => {
         allJobsHTML += `
             <div
-                class="relative border border-gray-200 rounded-xl p-5 sm:p-6 bg-white hover:shadow-md transition-shadow duration-200 mb-4">
+                class="${`relative border border-gray-200 ${job.status === "interview" ? "border-l-[#22c55e] border-3" : ""} ${job.status === "rejected" ? "border-l-[#ef4444] border-3" : ""} rounded-xl p-5 sm:p-6 bg-white hover:shadow-md transition-shadow duration-200 mb-4`}">
 
                 <!-- Delete Icon -->
                 <button onClick="handleDelete(${job.id})" id="js-delete-job" class="absolute top-4 right-4 text-gray-300 hover:text-red-400 transition-colors duration-150">
@@ -149,14 +149,24 @@ window.handleDelete = handleDelete;
 allJobFillter.addEventListener('click', () => {
     activeFilter = 'all';
     renderAllJobs(getFilterJobs());
+
+    allJobFillter.classList.add("tab-active-custom");
+    interviewJobFillter.classList.remove("tab-active-custom");
+    rejectedJobFillter.classList.remove("tab-active-custom");
 });
 
 interviewJobFillter.addEventListener('click', () => {
     activeFilter = 'interview'
     renderAllJobs(getFilterJobs());
+    allJobFillter.classList.remove("tab-active-custom");
+    interviewJobFillter.classList.add("tab-active-custom");
+    rejectedJobFillter.classList.remove("tab-active-custom");
 })
 
 rejectedJobFillter.addEventListener('click', () => {
     activeFilter = 'rejected'
     renderAllJobs(getFilterJobs());
+    allJobFillter.classList.remove("tab-active-custom");
+    interviewJobFillter.classList.remove("tab-active-custom");
+    rejectedJobFillter.classList.add("tab-active-custom");
 })
