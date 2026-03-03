@@ -1,5 +1,58 @@
-# Job Application Tracker
-**Project Live Link:** [[Job-Application-Tracker](https://ziaul-hoque4820.github.io/Job-Application-Tracker/)]
+# 📋 Job Application Tracker
+
+A simple and clean **Job Application Tracker** built with vanilla HTML, CSS, and JavaScript. This project was created as an assignment to practice handling DOM manipulation and application logic using pure JavaScript — no frameworks, no libraries.
+
+---
+
+## 🖼️ Preview
+
+![Job Application Tracker](./assets/job-application-tracker.jpg)
+
+---
+
+## ✨ Features
+
+- View all available job listings with company name, role, location, type, and salary
+- Track application status: **Pending**, **Interview**, or **Rejected**
+- Filter jobs by status using tab navigation (All / Interview / Rejected)
+- Delete any job listing with a single click
+- Live counter showing total jobs, interview count, and rejected count
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool | Purpose |
+|------|---------|
+| **HTML5** | Page structure and markup |
+| **CSS3** | Styling, layout, and responsive design |
+| **Vanilla JavaScript** | All functionality — DOM manipulation, event handling, state management |
+
+> 🎯 **Main Goal:** Learn to handle real-world UI functionality using only vanilla JavaScript, without relying on any framework or library.
+
+---
+
+## 🚀 Live Demo
+
+🔗 [View Live Site](https://ziaul-hoque4820.github.io/Job-Application-Tracker/)
+
+---
+
+## 📁 Project Structure
+
+```
+Job-Application-Tracker/
+├── index.html       # Main HTML structure
+├── style.css        # Styling and layout
+└── script.js        # JavaScript logic and interactivity
+```
+
+---
+
+## 👨‍💻 Author
+
+**Ziaul Hoque**
+GitHub: [@ziaul-hoque4820](https://github.com/ziaul-hoque4820)
 ---
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
@@ -28,7 +81,7 @@
 - সহজ কথায়, অনেকগুলো আলাদা আলাদা চাইল্ড এলিমেন্টে (যেমন ১০০টি li) আলাদাভাবে ইভেন্ট লিসেনার না বসিয়ে, তাদের কমন Parent এলিমেন্টে একটি মাত্র ইভেন্ট লিসেনার বসানোর কৌশলকেই Event Delegation বলে। এটি মূলত Event Bubbling-এর সুবিধা নিয়ে কাজ করে.
 .
 ---
-# What is the difference between preventDefault() and stopPropagation() methods?
+### 5. What is the difference between preventDefault() and stopPropagation() methods?
 - preventDefault() ব্রাউজারের ডিফল্ট কাজ বন্ধ করে যেমন কোনো ফরম পূরন করে সেন্ড করতে চাইলে ব্রাউজার অটোমেটিক পেজ রিলোড দিয়ে দেয়। তাই preventDefault() ব্যবহার করা হয়।
 - stopPropagation() ইভেন্টের উপরে ওঠা বা বাবলিংক বন্ধ করতে ব্যবহার করা হয়।
 .
