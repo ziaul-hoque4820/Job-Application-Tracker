@@ -34,7 +34,7 @@ A simple and clean **Job Application Tracker** built with vanilla HTML, CSS, and
 
 ## 🚀 Live Demo
 
-🔗 [View Live Site](https://ziaul-hoque4820.github.io/Job-Application-Tracker/)
+🔗 [View Live Site](https://ziaulhoquepatwary.github.io/Job-Application-Tracker/)
 
 ---
 
@@ -52,7 +52,7 @@ Job-Application-Tracker/
 ## 👨‍💻 Author
 
 **Ziaul Hoque**
-GitHub: [@ziaul-hoque4820](https://github.com/ziaul-hoque4820)
+GitHub: [@ziaulhoquepatwary](https://github.com/ziaulhoquepatwary)
 ---
 ### 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
